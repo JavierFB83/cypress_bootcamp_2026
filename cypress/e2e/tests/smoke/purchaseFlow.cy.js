@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
-import LoginPage from '../../support/pages/LoginPage'
-import ProductDetailPage from '../../support/pages/ProductDetailPage'
-import HomePage from '../../support/pages/HomePage'
+import LoginPage from '../../../support/pages/LoginPage'
+import ProductDetailPage from '../../../support/pages/ProductDetailPage'
+import HomePage from '../../../support/pages/HomePage'
 
 describe('Flujo completo de compra añadiendo productos de diferentes tipos', () => {
 
