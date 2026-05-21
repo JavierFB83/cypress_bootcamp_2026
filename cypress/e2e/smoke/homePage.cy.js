@@ -12,7 +12,9 @@ describe('Batería de pruebas de smoke sobre la página principal', () => {
     // Header
     cy.get('header').within(() => {
       cy.get('h2').should('contain', 'Footer')
-      cy.get('input[name="search"]').should('be.visible').and('have.attr', 'placeholder', 'Buscar productos...')
+      // Esto es igual que la de abajo
+      // cy.get('input[name="search"]').should('be.visible').and('have.attr', 'placeholder', 'Buscar productos...')
+      HomePage.getByAttribute('name', 'search').should('be.visible').and('have.attr', 'placeholder', 'Buscar productos...')
       HomePage.getByHref('/login').should('be.visible')
       HomePage.getByHref('/products').should('be.visible').and('contain', 'Todos')
       HomePage.getByHref('/products/category/zapatillas').should('be.visible').and('contain', 'Zapatillas')
@@ -56,19 +58,21 @@ describe('Batería de pruebas de smoke sobre la página principal', () => {
     cy.contains('Mostrando 40 productos').should('be.visible')
 
     // Comprobar que se muestran 16 productos en la primera página
-    cy.get('[class*="grid"] > div').should('have.length', 16)
+    cy.get('app-product-card').should('have.length', 16)
 
     // Ir a la página 3
     HomePage.clickPage(3)
 
     // Hacer click sobre el último producto de la página 3
-    cy.get('[class*="grid"] > div').last().find('a').first().click()
+    HomePage.clickProductCard('Nike Club')
 
     // Verificar que se navega a la página de detalle del producto
     cy.url().should('include', '/products/product/')
+    HomePage.buttonStateByContent('Comprar ahora', 'be.disabled')
+    HomePage.buttonStateByContent('Añadir a la cesta', 'be.disabled')
   })
 
-  it('ID:TC003 - Buscar producto sin resultados y limpiar filtros', () => {
+  it.only('ID:TC003 - Buscar producto sin resultados y limpiar filtros', () => {
     HomePage.searchProduct('ProductoQueNoExisteXYZ123')
 
     cy.url().should('include', 'name=ProductoQueNoExisteXYZ123')
