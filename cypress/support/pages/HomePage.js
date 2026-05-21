@@ -5,6 +5,7 @@ class HomePage extends CommonPage {
   // Acciones
   visit() {
     cy.visit('https://footer-shop.vercel.app/home')
+    this.getByPlaceholder('Buscar productos...').should('be.visible')
   }
 
   clickDiscoverCollection() {

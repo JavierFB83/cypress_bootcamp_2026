@@ -18,7 +18,7 @@ class LoginPage extends CommonPage {
   clearEmail() {
     this.getByFormControl('email').clear()
   }
-
+  
   clickSubmit() {
     this.getByType('submit').last().click()
   }
@@ -31,10 +31,14 @@ class LoginPage extends CommonPage {
     this.getByAriaLabel('Toggle password visibility').click()
   }
 
-  login(email, password) {
-    this.typeEmail(email)
-    this.typePassword(password)
-    this.clickSubmit()
+  login() {
+    cy.fixture('login_form').then((loginData) => {
+      this.typeEmail(loginData.email)
+      this.typePassword(loginData.password)
+      this.clickSubmit()
+      cy.url().should('not.include', '/login').and('include', '/home')
+      this.assertToastMessage('Inicio de sesión exitoso')
+    })
   }
 }
 
