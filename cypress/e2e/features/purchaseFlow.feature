@@ -1,8 +1,5 @@
 Feature: Flujo de Compra
 
-  Como usuario autenticado de Footer Shop
-  Quiero poder añadir productos al carrito
-  Para completar el flujo de compra
 
   Background:
     Given el usuario inicia sesión con "cypress_bootcamp_2026@javi.com" y "1234Javi."

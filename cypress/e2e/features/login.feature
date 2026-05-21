@@ -1,9 +1,5 @@
 Feature: Login
 
-  Como usuario de Footer Shop
-  Quiero poder iniciar sesión en la aplicación
-  Para acceder a las funcionalidades de compra
-
   Background:
     Given el usuario está en la página de login
     And el botón de Google es visible con texto "Continuar con Google"

@@ -1,9 +1,5 @@
 Feature: Página Principal
 
-  Como usuario de Footer Shop
-  Quiero ver la página principal con todas sus secciones
-  Para poder navegar y buscar productos
-
   Background:
     Given el usuario está en la página principal
 
