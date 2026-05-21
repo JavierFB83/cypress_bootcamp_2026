@@ -1,6 +1,6 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
-import HomePage from "../../support/pages/HomePage";
-import FiltersPage from "../../support/pages/FiltersPage";
+import HomePage from "../pages/HomePage";
+import FiltersPage from "../pages/FiltersPage";
 
 // ── Background ──
 

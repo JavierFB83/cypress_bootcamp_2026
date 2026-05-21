@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-import LoginPage from '../../support/pages/LoginPage'
+import LoginPage from '../../pages/LoginPage'
 
 describe('Batería de pruebas de smoke sobre el login', () => {
 

@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
-import HomePage from '../../support/pages/HomePage'
-import FiltersPage from '../../support/pages/FiltersPage'
+import HomePage from '../../pages/HomePage'
+import FiltersPage from '../../pages/FiltersPage'
 
 describe('Batería de pruebas de smoke sobre la página principal', () => {
 
