@@ -7,7 +7,7 @@ Then("aparece el toast {string}", (message) => {
 });
 
 Then("el toast desaparece", () => {
-  cy.get("app-toast", { timeout: 20000 }).should("not.be.visible");
+  cy.get("app-toast").should("not.be.visible");
 });
 
 Then("la URL contiene {string}", (path) => {

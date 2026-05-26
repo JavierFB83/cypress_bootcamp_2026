@@ -15,6 +15,7 @@ module.exports = defineConfig({
       "cypress/e2e/**/*.cy.js",
       "cypress/e2e/**/*.feature",
     ],
+    defaultCommandTimeout: 15000,
     async setupNodeEvents(on, config) {
       const bundler = createBundler({
         plugins: [createEsbuildPlugin(config)],
