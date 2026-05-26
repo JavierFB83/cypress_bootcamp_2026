@@ -8,6 +8,12 @@ const {
 } = require("@badeball/cypress-cucumber-preprocessor/esbuild");
 
 module.exports = defineConfig({
+  // Desactiva la seguridad de mismo origen para permitir interactuar con iframes
+  // cross-origin de Stripe (checkout.stripe.com ↔ js.stripe.com)
+  chromeWebSecurity: false,
+  // Modifica el código de terceros (Stripe) que bloquea el renderizado de la página
+  // en Cypress. Sin esto, la página de Stripe Checkout muestra solo skeletons
+  experimentalModifyObstructiveThirdPartyCode: true,
 
   e2e: {
     // Soporta tanto archivos .cy.js como .feature
