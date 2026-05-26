@@ -4,6 +4,7 @@ Feature: Filtros de Productos
   Background:
     Given el usuario está en la página de productos
 
+  @smoke
   Scenario: TC001 - Verificar que el panel de filtros se abre y se cierra correctamente
     When el usuario abre el panel de filtros
     Then el panel de filtros muestra el título "Filtros"

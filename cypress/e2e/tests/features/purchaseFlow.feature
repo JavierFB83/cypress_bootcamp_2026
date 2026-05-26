@@ -59,6 +59,7 @@ Feature: Flujo de Compra
     When el usuario elimina el primer producto del carrito
     Then el carrito está vacío
 
+  @smoke
   Scenario: TC004 - Flujo de compra: agregar productos y redirigir a pago
     # Paso 1: Agregar zapatilla
     When el usuario busca y selecciona el producto "Nike Air Force 1"

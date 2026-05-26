@@ -1,5 +1,5 @@
 @regression @login
-Feature: Login
+Feature: La funcionalidad del login
 
   Background:
     Given el usuario está en la página de login
@@ -18,6 +18,7 @@ Feature: Login
     Then el campo password tiene el valor "1234Javi."
     And el botón de submit está deshabilitado
 
+  @smoke
   Scenario: TC002 - Login válido
     When el usuario escribe el email "cypress_bootcamp_2026@javi.com"
     And el usuario escribe la contraseña "1234Javi."
@@ -29,6 +30,7 @@ Feature: Login
     And aparece el toast "Inicio de sesión exitoso"
     And el toast desaparece
 
+  @smoke
   Scenario: TC003 - Usuario válido contraseña inválida
     When el usuario escribe el email "cypress_bootcamp_2026@javi.com"
     And el usuario escribe la contraseña "invalid password."
