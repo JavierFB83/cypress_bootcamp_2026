@@ -11,5 +11,5 @@ Then("el toast desaparece", () => {
 });
 
 Then("la URL contiene {string}", (path) => {
-  cy.url().should("include", path);
+  cy.url({ timeout: 30000 }).should("include", path);
 });

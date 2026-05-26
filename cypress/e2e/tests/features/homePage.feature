@@ -1,9 +1,9 @@
+@regression @homePage
 Feature: Página Principal
 
   Background:
     Given el usuario está en la página principal
 
-  @smoke @TC001
   Scenario: TC001 - Verificar elementos visibles del header, cuerpo principal y footer
     # Header
     Then el header contiene el título "Footer"
@@ -35,7 +35,6 @@ Feature: Página Principal
     And el footer contiene el enlace "Privacidad" a "/privacy"
     And el footer muestra "© 2026 Footer. Todos los derechos reservados."
 
-  @smoke @TC002
   Scenario: TC002 - Buscar "Nike", comprobar resultados, ir a página 3 y hacer click sobre el último elemento
     When el usuario busca "Nike"
     Then la URL contiene "name=Nike"
@@ -46,7 +45,6 @@ Feature: Página Principal
     And el usuario hace clic en el último producto
     Then la URL contiene "/products/product/"
 
-  @smoke @TC003
   Scenario: TC003 - Buscar producto sin resultados y limpiar filtros
     When el usuario busca "ProductoQueNoExisteXYZ123"
     Then la URL contiene "name=ProductoQueNoExisteXYZ123"

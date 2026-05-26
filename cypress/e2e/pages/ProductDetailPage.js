@@ -39,6 +39,20 @@ class ProductDetailPage extends CommonPage {
     this.getByAriaLabel(`Ver imagen ${imageNumber}`).click()
   }
 
+  removeAllProductsFromCart() {
+    this.getByHref("/cart").click();
+    cy.url().should("include", "/cart");
+    cy.get('body').should('contain', 'Mi Cesta de la Compra')
+    cy.get('body').then(($body) => {
+      const deleteButtons = $body.find('[aria-label="Eliminar producto"]')
+
+      if (deleteButtons.length > 0) {
+        cy.wrap(deleteButtons[0]).click()
+        this.removeAllProductsFromCart()
+      }
+    })
+  }
+
 }
 
 export default new ProductDetailPage()

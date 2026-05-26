@@ -4,7 +4,13 @@
   "description": "cypress_bootcamp_2026",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:tag:regression": "npx cypress run --spec 'cypress/e2e/tests/features/**/*.feature' --env tags='@regression'",
+    "cy:tag:homePage": "npx cypress run --spec 'cypress/e2e/tests/features/**/*.feature' --env tags='@homePage'",
+    "cy:tag:purchaseFlow": "npx cypress run --spec 'cypress/e2e/tests/features/**/*.feature' --env tags='@purchaseFlow'",
+    "cy:tag:filters": "npx cypress run --spec 'cypress/e2e/tests/features/**/*.feature' --env tags='@filters'",
+    "cy:tag:login": "npx cypress run --spec 'cypress/e2e/tests/features/**/*.feature' --env tags='@login'",
+    "cy:smoke": "npx cypress run --spec 'cypress/e2e/tests/smoke/**/*.cy.js'"
   },
   "repository": {
     "type": "git",

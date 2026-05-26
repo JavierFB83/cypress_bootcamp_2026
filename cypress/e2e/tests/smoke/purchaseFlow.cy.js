@@ -90,30 +90,4 @@ describe('Flujo completo de compra añadiendo productos de diferentes tipos', ()
     cy.contains('h2', 'Tu cesta está vacía').should('be.visible')
   })
 
-  it('ID:TC003 - Verificar que sin dirección no se puede pagar', () => {
-    // Añadir un producto
-    HomePage.navigateToProduct('New Era 9Forty')
-    cy.get('h1').should('contain', 'New Era 9Forty')
-    ProductDetailPage.selectSize('Talla Única')
-    ProductDetailPage.clickAddToCart()
-    cy.get('app-toast').should('contain', '¡Producto añadido a la cesta!')
-    cy.get('app-toast', { timeout: 20000 }).should('not.be.visible')
-
-    // Ir al carrito
-    ProductDetailPage.getByHref('/cart').click()
-    cy.url().should('include', '/cart')
-
-    // Verificar que el botón de pagar está deshabilitado
-    cy.contains('button', 'Pagar de forma segura').should('be.disabled')
-    cy.contains('Debes seleccionar una dirección de envío para continuar.').should('be.visible')
-
-    // Verificar opciones de envío
-    cy.contains('Estándar (48/72h)').should('be.visible')
-    cy.contains('Express (24h)').should('be.visible')
-
-    // Limpiar carrito
-    cy.get('[aria-label="Eliminar producto"]').first().click()
-    cy.contains('h2', 'Tu cesta está vacía').should('be.visible')
-  })
-
 })

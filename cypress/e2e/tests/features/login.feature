@@ -1,10 +1,10 @@
+@regression @login
 Feature: Login
 
   Background:
     Given el usuario está en la página de login
     And el botón de Google es visible con texto "Continuar con Google"
 
-  @smoke @TC001
   Scenario: TC001 - Verificar botón iniciar sesión está desactivado hasta que usuario y password están rellenos
     Then el enlace "¿Olvidaste tu contraseña?" apunta a "/forgot-password"
     And el campo email tiene placeholder "tu.email@ejemplo.com" y está vacío
@@ -18,7 +18,6 @@ Feature: Login
     Then el campo password tiene el valor "1234Javi."
     And el botón de submit está deshabilitado
 
-  @smoke @TC002
   Scenario: TC002 - Login válido
     When el usuario escribe el email "cypress_bootcamp_2026@javi.com"
     And el usuario escribe la contraseña "1234Javi."
@@ -30,7 +29,6 @@ Feature: Login
     And aparece el toast "Inicio de sesión exitoso"
     And el toast desaparece
 
-  @smoke @TC003
   Scenario: TC003 - Usuario válido contraseña inválida
     When el usuario escribe el email "cypress_bootcamp_2026@javi.com"
     And el usuario escribe la contraseña "invalid password."
@@ -39,7 +37,6 @@ Feature: Login
     And aparece el toast "Credenciales inválidas"
     And el toast desaparece
 
-  @smoke @TC004
   Scenario: TC004 - Usuario inválido contraseña válida
     When el usuario escribe el email "usuario_invalido@javi.com"
     And el usuario escribe la contraseña "1234Javi."
@@ -48,7 +45,6 @@ Feature: Login
     And aparece el toast "Credenciales inválidas"
     And el toast desaparece
 
-  @smoke @TC005
   Scenario: TC005 - Verificar visibilidad del campo contraseña
     Then el botón de toggle password es visible
     When el usuario escribe la contraseña "1234Javi."
@@ -60,12 +56,11 @@ Feature: Login
     Then el toggle muestra "visibility"
     And el campo password es de tipo "password"
 
-  @smoke @TC006
   Scenario: TC006 - Verificar redirección a la página de olvidé mi contraseña
     Then la página no contiene el texto "Recuperar Contraseña"
     And el campo con placeholder "Introduce tu dirección de email" no existe
     And el botón submit "Enviar Enlace" no existe
-    When el usuario hace clic en "¿Olvidaste tu contraseña?"
+    When el usuario hace clic en el enlace "¿Olvidaste tu contraseña?"
     Then la página contiene el texto "Recuperar Contraseña"
     And el campo con placeholder "Introduce tu dirección de email" es visible
     And el botón submit "Enviar Enlace" es visible

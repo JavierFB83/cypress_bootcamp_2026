@@ -35,7 +35,7 @@ When("el usuario hace clic en el toggle de visibilidad", () => {
   LoginPage.clickTogglePasswordVisibility();
 });
 
-When("el usuario hace clic en {string}", (linkText) => {
+When("el usuario hace clic en el enlace {string}", (linkText) => {
   LoginPage.clickForgotPassword();
 });
 
