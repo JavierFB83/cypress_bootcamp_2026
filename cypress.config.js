@@ -20,9 +20,8 @@ module.exports = defineConfig({
   experimentalModifyObstructiveThirdPartyCode: true,
   // Configuración para pruebas de accesibilidad con wick-a11y
   accessibilityFolder: 'cypress/accessibility',
-  env: {
-    enableAccessibilityVoice: true,
-  },
+  // env: { // Opción de voz eliminada por incompatibilidad en Cypress runner
+  // },
   e2e: {
     // Soporta tanto archivos .cy.js como .feature
     specPattern: [

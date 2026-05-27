@@ -60,17 +60,11 @@ module.exports = defineConfig({
 });
 ```
 
-- **Variables de entorno:**
+
+-- **Variables de entorno:**
   - `generateReport`: Controla el tipo de reporte (`detailed`, `basic`, `none`).
-  - `enableAccessibilityVoice`: Activa el feedback por voz en el runner.
 
-Puedes definirlas en `cypress.env.json`, en la propiedad `env` de `cypress.config.js`, o por línea de comandos:
-
-```json
-{
-  "enableAccessibilityVoice": true
-}
-```
+Puedes definirla en `cypress.env.json`, en la propiedad `env` de `cypress.config.js`, o por línea de comandos.
 
 ---
 
@@ -105,7 +99,6 @@ cy.checkAccessibility(null, {
 
 - Los resultados se muestran en el log de Cypress y visualmente en el runner.
 - Se generan reportes HTML en la carpeta configurada.
-- Si activas la voz, puedes escuchar los resultados en el runner.
 
 ---
 
@@ -118,9 +111,40 @@ cy.checkAccessibility(null, {
 
 ## Notas
 - Solo se puede ejecutar un análisis de accesibilidad por test.
-- El feedback por voz solo funciona en modo interactivo (`npx cypress open`).
 - Si no hay violaciones, no se genera reporte.
 
 ---
 
-¡Listo! Ahora puedes analizar la accesibilidad de tus aplicaciones con Cypress y wick-a11y.
+## Opciones de cy.checkAccessibility()
+
+Puedes personalizar el análisis de accesibilidad pasando un objeto de opciones como segundo argumento. Las opciones más relevantes son:
+
+- **generateReport**: Tipo de reporte HTML generado. Valores: `'detailed'` (por defecto), `'basic'`, `'none'`.
+- **includedImpacts**: Array de severidades que harán fallar el test. Ejemplo: `['critical', 'serious']`.
+- **onlyWarnImpacts**: Array de severidades que solo mostrarán advertencia, pero no fallarán el test. Ejemplo: `['moderate', 'minor']`.
+- **impactStyling**: Personaliza los estilos e iconos de los recuadros de severidad en la página.
+- **runOnly**: Array de estándares/tags de accesibilidad a analizar. Ejemplo: `['wcag2a', 'wcag2aa', 'best-practice']`.
+- **rules**: Habilita o deshabilita reglas específicas de axe-core. Ejemplo: `{ 'color-contrast': { enabled: false } }`.
+- **retries**: Número de reintentos si se detectan violaciones. Por defecto: `0`.
+- **interval**: Milisegundos entre reintentos. Por defecto: `1000`.
+- **context**: Selector CSS, elemento DOM o configuración avanzada para limitar el análisis a una parte de la página.
+
+### Ejemplo avanzado
+
+```js
+describe('Accesibilidad personalizada', () => {
+  it('analiza solo WCAG 2.2 AAA y muestra advertencias para severidad menor', () => {
+    cy.visit('https://ejemplo.com');
+    cy.checkAccessibility(null, {
+      generateReport: 'detailed',
+      includedImpacts: ['critical', 'serious', 'moderate'],
+      onlyWarnImpacts: ['minor'],
+      runOnly: ['wcag22aaa'],
+      rules: { 'color-contrast': { enabled: false } },
+    });
+  });
+});
+```
+
+Para más detalles y opciones avanzadas, consulta la [documentación oficial de wick-a11y](https://github.com/sclavijosuero/wick-a11y#api-reference).
+
