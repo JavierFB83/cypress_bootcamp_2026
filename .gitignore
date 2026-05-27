@@ -1,2 +1,5 @@
+# Ignorar configuración local de VS Code
+.vscode/
 /node_modules
 /cypress/screenshots
+/cypress/accessibility
