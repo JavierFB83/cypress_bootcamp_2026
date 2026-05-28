@@ -22,12 +22,18 @@ module.exports = defineConfig({
   accessibilityFolder: 'cypress/accessibility',
   // env: { // Opción de voz eliminada por incompatibilidad en Cypress runner
   // },
+
   e2e: {
     // Soporta tanto archivos .cy.js como .feature
     specPattern: [
       "cypress/e2e/**/*.cy.js",
       "cypress/e2e/**/*.feature",
     ],
+      env: {
+      snapshotOnly: true,
+      requestMode: true, // Habilita el modo de solicitud para pruebas de API usando cy.request
+
+    },
     defaultCommandTimeout: 15000,
     async setupNodeEvents(on, config) {
       const bundler = createBundler({

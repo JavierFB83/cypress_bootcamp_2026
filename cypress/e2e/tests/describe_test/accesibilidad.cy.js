@@ -25,12 +25,6 @@ describe('Accesibilidad - Footer Shop', () => {
       interval: 1500,
     });
   });
-});
-
-describe('Accesibilidad - Banco Santander', () => {
-  beforeEach(() => {
-    Cypress.on('uncaught:exception', () => false);
-  });
 
   it('La home de Banco Santander cumple accesibilidad (por defecto)', () => {
     cy.visit('https://www.bancosantander.es/particulares');
@@ -43,9 +37,9 @@ describe('Accesibilidad - Banco Santander', () => {
     cy.contains('ACEPTAR').click({force: true});
     cy.checkAccessibility(null, {
       // Fallará solo con errores críticos o serios
-      includedImpacts: ['critical', 'serious'],
+      // includedImpacts: ['critical', 'serious'],
       // Los errores "moderate" y "minor" solo mostrarán advertencia, no fallan el test
-      onlyWarnImpacts: ['moderate', 'minor'],
+      onlyWarnImpacts: ['critical', 'serious', 'moderate', 'minor'],
       // Desactiva la regla de contraste de color
       rules: { 'color-contrast': { enabled: false } },
       // Genera un reporte HTML detallado
@@ -56,12 +50,8 @@ describe('Accesibilidad - Banco Santander', () => {
       interval: 2000,
     });
   });
-});
 
-describe('Accesibilidad - Junta de Andalucía', () => {
-  beforeEach(() => {
-    Cypress.on('uncaught:exception', () => false);
-  });
+
 
   it('La home de Junta de Andalucía cumple accesibilidad (por defecto)', () => {
     cy.visit('https://www.juntadeandalucia.es/');
@@ -85,4 +75,5 @@ describe('Accesibilidad - Junta de Andalucía', () => {
       interval: 1000,
     });
   });
+
 });

@@ -27,7 +27,8 @@
     "stepDefinitions": "cypress/e2e/step_definitions/**/*.js"
   },
   "dependencies": {
-    "cypress": "^15.15.0"
+    "cypress": "^15.15.0",
+    "cypress-plugin-api": "^2.11.2"
   },
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^24.0.1",

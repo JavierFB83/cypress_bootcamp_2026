@@ -3,14 +3,13 @@ Feature: Página Principal
 
   Background:
     Given I login and keep the sesion
-
+    And I visit the main page
 
   @smoke
   Scenario: TC001 - Verificar elementos visibles del header, cuerpo principal y footer
     # Header
     Given el header contiene el título "Footer"
     And el buscador de productos es visible con placeholder "Buscar productos..."
-    And el enlace de login es visible en el header
     And el enlace "Todos" a "/products" es visible en el header
     And el enlace "Zapatillas" a "/products/category/zapatillas" es visible en el header
     And el enlace "Ropa" a "/products/category/ropa" es visible en el header

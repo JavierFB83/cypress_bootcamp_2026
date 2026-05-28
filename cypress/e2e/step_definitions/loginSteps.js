@@ -130,5 +130,8 @@ Then("el botón submit {string} es visible", (text) => {
 
 Then ('I login and keep the sesion', () => {
   LoginPage.openSession();
-  LoginPage.visitMain();
 });
+
+Then ('I visit the main page', () => {
+  LoginPage.visitMain();
+})

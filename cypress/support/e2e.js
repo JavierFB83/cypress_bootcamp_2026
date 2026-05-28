@@ -14,8 +14,10 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import './commands';
 import 'wick-a11y';
+import 'cypress-plugin-api';
+
 
 // Captura el error de expressCheckout cross-origin y evita que falle el test
 Cypress.on('uncaught:exception', (err) => {

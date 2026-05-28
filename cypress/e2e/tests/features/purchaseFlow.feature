@@ -3,8 +3,8 @@ Feature: Flujo de Compra
 
 
   Background:
-    Given el usuario inicia sesión con "cypress_bootcamp_2026@javi.com" y "1234Javi."
-    And el usuario elimina todos los productos del carrito
+    Given I login and keep the sesion
+    And I visit the main page
 
   Scenario: TC001 - Añadir zapatilla y ropa al carrito y verificar el resumen
     # Zapatilla
