@@ -7,6 +7,10 @@ class LoginPage extends CommonPage {
     cy.visit('https://footer-shop.vercel.app/login')
   }
 
+  visitMain() {
+    cy.visit('https://footer-shop.vercel.app/')
+  }
+
   typeEmail(email) {
     this.getByFormControl('email').type(email)
   }
@@ -39,6 +43,14 @@ class LoginPage extends CommonPage {
       cy.url().should('not.include', '/login').and('include', '/home')
       this.assertToastMessage('Inicio de sesión exitoso')
     })
+  }
+
+  openSession() {
+    cy.session('loginSession', () => {
+      this.visit(); // Visita la URL de inicio de sesión
+      this.login(); // Logueado utilizando los datos del fixture
+    });
+    this.visitMain(); // Visita la página principal después de abrir la sesión
   }
 }
 

@@ -2,7 +2,8 @@
 Feature: Página Principal
 
   Background:
-    Given el usuario está en la página principal
+    Given I login and keep the sesion
+
 
   @smoke
   Scenario: TC001 - Verificar elementos visibles del header, cuerpo principal y footer

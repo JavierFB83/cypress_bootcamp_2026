@@ -127,3 +127,8 @@ Then("el botón submit {string} no existe", (text) => {
 Then("el botón submit {string} es visible", (text) => {
   cy.contains('[type="submit"]', text).should("be.visible");
 });
+
+Then ('I login and keep the sesion', () => {
+  LoginPage.openSession();
+  LoginPage.visitMain();
+});
