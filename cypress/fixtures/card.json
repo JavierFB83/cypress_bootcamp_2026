@@ -1,7 +1,7 @@
 {
 "email": "cypress_bootcamp_2026@javi.com",
-"card number":"4242424242424242", 
-"card date": "05 / 30",
-"cvc number": "123",
-"Cardholder name": "Javi Flores"
+"card_number":"4242424242424242", 
+"card_date": "05 / 30",
+"cvc_number": "123",
+"Cardholder_name": "Javi Flores"
 }

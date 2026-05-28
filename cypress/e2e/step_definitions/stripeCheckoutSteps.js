@@ -22,16 +22,16 @@ When("el usuario confirma la compra", () => {
 
 When("el usuario rellena los datos de pago con el fixture", () => {
   cy.fixture("card").then((cardData) => {
-    cy.get("#email", { timeout: 30000 }).clear().type(cardData.email);
-    cy.get('[name="cardNumber"]').type(cardData["card number"]);
-    cy.get('[name="cardExpiry"]').type(cardData["card date"]);
-    cy.get('[name="cardCvc"]').type(cardData["cvc number"]);
-    cy.get("#billingName").clear().type(cardData["Cardholder name"]);
+    cy.get("#email").clear().type(cardData.email);
+    cy.get('[name="cardNumber"]').type(cardData.card_number);
+    cy.get('[name="cardExpiry"]').type(cardData.card_date);
+    cy.get('[name="cardCvc"]').type(cardData.cvc_number);
+    cy.get("#billingName").clear().type(cardData.Cardholder_name);
   });
 });
 
 When("el usuario hace click en pagar", () => {
-  cy.get(".SubmitButton", { timeout: 30000 }).click();
+  cy.get(".SubmitButton").click();
 });
 
 When("el usuario hace click en ir a mis pedidos", () => {
