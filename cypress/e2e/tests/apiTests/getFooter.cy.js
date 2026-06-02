@@ -1,5 +1,5 @@
 describe('API GET Footer Products & Cart', () => {
-	it.only('GET /api/products/ - Lista todos los productos', () => {
+	it('GET /api/products/ - Lista todos los productos', () => {
 		cy.request('https://footer-back.onrender.com/api/products/').then((response) => {
 			expect(response.status).to.eq(200);
 			expect(response.body).to.have.property('products');
@@ -25,8 +25,8 @@ describe('API GET Footer Products & Cart', () => {
 			expect(response.status).to.eq(200);
 			expect(response.body).to.have.property('products');
 			expect(response.body.products).to.be.an('array');
-			expect(response.body).to.have.property('page');
-			expect(response.body.page).to.eq(1);
+			expect(response.body).to.have.property('currentPage', 1);
+			expect(response.body.currentPage).to.eq(1);
 		});
 	});
 
@@ -68,23 +68,42 @@ describe('API GET Footer Products & Cart', () => {
 			expect(response.status).to.eq(200);
 			expect(response.body).to.have.property('id');
 			expect(response.body.id).to.eq(141);
-			expect(response.body).to.have.property('name');
+			expect(response.body).to.have.property('name', 'Nike Club Fleece');
 		});
 	});
 
 	it('GET /api/products/141/related - Productos relacionados', () => {
 		cy.request('https://footer-back.onrender.com/api/products/141/related').then((response) => {
 			expect(response.status).to.eq(200);
-			expect(response.body).to.have.property('products');
-			expect(response.body.products).to.be.an('array');
+			expect(response.body).to.be.an('array');
 		});
 	});
 
-	it('GET /api/cart - Obtener carrito', () => {
-		cy.request('https://footer-back.onrender.com/api/cart').then((response) => {
+	it.only('GET /api/cart - Obtener carrito', () => {
+
+        cy.fixture('login_form').then((loginData) => {
+            cy.request('POST', 'https://footer-back.onrender.com/api/auth/login', {
+                email: loginData.email,
+                password: loginData.password,
+            }).then((loginResponse) => {
+                expect(loginResponse.status).to.eq(200);
+                expect(loginResponse.body).to.have.property('token');
+                // Guardamos el token como alias para usarlo en los tests
+                cy.wrap(loginResponse.body.token).as('eltokendemisesion');
+            });
+        });
+ 		cy.get('@eltokendemisesion').then((token) => { 
+		cy.request({
+			method: 'GET',
+			url: 'https://footer-back.onrender.com/api/cart',
+			headers: {
+				Authorization: `Bearer ${token}`
+			}
+		}).then((response) => {
 			expect(response.status).to.eq(200);
-			expect(response.body).to.have.property('cart');
-			expect(response.body.cart).to.be.an('array');
+			// expect(response.body).to.have.property('cart');
+			expect(response.body).to.be.an('array');
 		});
+	});
 	});
 });

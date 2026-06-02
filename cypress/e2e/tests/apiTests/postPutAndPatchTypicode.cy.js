@@ -80,7 +80,7 @@ describe('Testing POST and PUT on Typicode', () => {
     })
   })
 
-  it('Send "POST" and check all the values from the the response', () => {
+  it('Send "PUT" and check all the values from the the response', () => {
     const putBody =  {
       userId:5 ,
       id: 5,

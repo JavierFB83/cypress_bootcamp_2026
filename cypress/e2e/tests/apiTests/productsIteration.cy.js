@@ -13,7 +13,7 @@ describe('API Products - Iteración sobre listado guardado en JSON', () => {
 		// 1. GET listado de productos
 		cy.request({
 			method: 'GET',
-			url: 'https://footer-back.onrender.com/api/products?page=2',
+			url: 'https://footer-back.onrender.com/api/products?page=1&stock=true',
 		}).then((response) => {
 			expect(response.status).to.eq(200);
 			expect(response.body).to.have.property('products').that.is.an('array').and.not.empty;
@@ -62,7 +62,7 @@ describe('API Products - Iteración sobre listado guardado en JSON', () => {
 	it('Hace un GET de detalle por cada uno de los primeros 3 productos del JSON', () => {
 		cy.fixture('products.json').then((data) => {
 			// Si queremos limitar para para no saturar la API o que el test no sea muy largo podemos usar solo una muestra de los productos, por ejemplo los primeros 3
-			// const sample = data.products.slice(0, 3);
+			// const sample3Products = data.products.slice(0, 3);
 
 			data.products.forEach((product) => {
 				cy.request({
@@ -110,6 +110,7 @@ describe('API Products - Iteración sobre listado guardado en JSON', () => {
 							const variant = detail.body.variants.find((v) => v.stock > 0) || detail.body.variants[0];
 							expect(variant, `variant válido para ${product.name}`).to.exist;
 							const productVariantStockId = variant.id;
+							cy.log(`Variant elegido para ${product.name}: id=${productVariantStockId}, stock=${variant.stock}`);
 
 							// 2. POST al carrito
 							cy.request({

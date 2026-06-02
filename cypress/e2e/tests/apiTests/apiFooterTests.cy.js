@@ -15,10 +15,10 @@ describe('API GET Footer Products & Cart', () => {
     });
 
     it('Flujo completo: buscar producto por nombre, obtener variants y añadir al carrito', () => {
-			const productName = 'Adidas Gazzelle';
-			const desiredColor = 'Blanco Verde';
-			const desiredSize = '39';
-			const quantity = 1;
+			const productName = 'Nike Phoenix Oversized';
+			const desiredColor = 'Rosa';
+			const desiredSize = 'XS';
+			const quantity = 6;
 			cy.get('@authToken').then((token) => { // Accedemos al token obtenido en el beforeEach para usarlo en las peticiones que requieren autenticación
 
 			// 1. GET producto por nombre para obtener el id
@@ -46,7 +46,7 @@ describe('API GET Footer Products & Cart', () => {
 					const variants = detailResponse.body.variants;
 
 					// Buscar el variant que coincida con color y talla deseados, si no lo encuentra, el test fallará con un mensaje claro
-					const variant = variants.find((v) => v.color === desiredColor && v.size === desiredSize);
+					const variant = variants.find((variant) => variant.color === desiredColor && variant.size === desiredSize);
 					expect(variant,`No se encontró ningún variant con color "${desiredColor}" y talla "${desiredSize}"`).to.exist;
 					expect(variant).to.have.property('id');
 					const productVariantStockId = variant.id;
@@ -116,11 +116,7 @@ describe('API GET Footer Products & Cart', () => {
 										// Aserción: el item eliminado ya no está en el carrito
 										// (útil cuando no estemos seguros de que el carrito este vacío)
 										const deletedItem = emptyCartResponse.body.find((item) => item.id === itemId);
-										expect(
-											deletedItem,
-											`El item con id=${itemId} sigue presente en el carrito tras el DELETE`
-										).to.be.undefined;
-
+										expect(deletedItem).to.be.undefined;
 										// Aserción: el carrito está vacío (útil si sabemos que solo había un item)
 										expect(emptyCartResponse.body).to.be.an('array').that.is.empty;
 										cy.log('Carrito vacío verificado');
