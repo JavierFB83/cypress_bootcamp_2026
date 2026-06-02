@@ -1,4 +1,4 @@
-/**
+/** 
  * Test que:
  *   1. Hace un GET a /api/products para obtener el listado de productos.
  *   2. Guarda la respuesta como JSON en cypress/fixtures/products.json
