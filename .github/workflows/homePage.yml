@@ -19,10 +19,10 @@ jobs:
     - name: Run Cypress home page tests
       run: npm run cy:homePage
       
-      if: always()
     - name: Send notification to Slack
+      if: always()
       env:
-        SLACK_WEBHOOK_URL: ${{ secrets.PIPELINESLACKCONECTION }}
+          SLACK_WEBHOOK_URL: ${{ secrets.PIPELINESLACKCONECTION }}
       run: |
         payload="payload={\"text\":\":rocket: Pipeline '${{ github.workflow }}' launched on branch '${{ github.ref }}' in repository '${{ github.repository }}'\"}"
         curl -X POST --data-urlencode "$payload" $SLACK_WEBHOOK_URL
