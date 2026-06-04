@@ -56,8 +56,6 @@ module.exports = defineConfig({
       await addCucumberPreprocessorPlugin(on, config);
       on("file:preprocessor", bundler);
 
-      await addCucumberPreprocessorPlugin(on, config);
-
       // wick-a11y: agrega tareas de accesibilidad
       addAccessibilityTasks(on);
 
