@@ -31,7 +31,7 @@ jobs:
     - name: Send notification to Slack
       if: failure()
       env:
-          SLACK_WEBHOOK_URL: ${{ secrets.PIPELINESLACKCONECTION }}
+          SLACK_WEBHOOK_URL: ${{ secrets.NEWPIPELINE }}
       run: |
           payload="payload={\"text\":\":x: Pipeline '${{ github.workflow }}' failed on branch '${{ github.ref }}' in repository '${{ github.repository }}'\"}"
           curl -X POST --data-urlencode "$payload" $SLACK_WEBHOOK_URL
