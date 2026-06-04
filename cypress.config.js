@@ -40,7 +40,7 @@ module.exports = defineConfig({
       requestMode: true, // Habilita el modo de solicitud para pruebas de API usando cy.request
 
     },
-    defaultCommandTimeout: 15000,
+    defaultCommandTimeout: 10000,
     async setupNodeEvents(on, config) {
       const bundler = createBundler({
         plugins: [createEsbuildPlugin(config)],
