@@ -18,7 +18,8 @@ jobs:
 
     - name: Run Cypress home page tests
       run: npm run cy:homePage
-    
+      
+      if: always()
     - name: Send notification to Slack
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.PIPELINESLACKCONECTION }}

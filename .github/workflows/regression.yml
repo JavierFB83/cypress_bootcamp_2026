@@ -2,7 +2,7 @@ name: Cypress Regression Tests
 
 on:
   schedule:
-    - cron: "0 22 * * *"
+    - cron: "0 17 * * *"   # 19:00 hora España (CEST, UTC+2)
   workflow_dispatch:
 
 jobs:
