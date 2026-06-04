@@ -1,1 +1,2 @@
 # cypress_bootcamp_2026
+Cambio para ver el smoke
