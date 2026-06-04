@@ -2,6 +2,7 @@ import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import LoginPage from "../pages/LoginPage";
 import HomePage from "../pages/HomePage";
 import ProductDetailPage from "../pages/ProductDetailPage";
+import 'cypress-mochawesome-reporter/cucumberSupport';
 
 // ── Background ──
 

@@ -1,4 +1,5 @@
 import { Then } from "@badeball/cypress-cucumber-preprocessor";
+import 'cypress-mochawesome-reporter/cucumberSupport';
 
 // ── Steps compartidos entre múltiples features ──
 

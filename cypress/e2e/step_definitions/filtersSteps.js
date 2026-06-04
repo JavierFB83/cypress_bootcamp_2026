@@ -1,6 +1,8 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import HomePage from "../pages/HomePage";
 import FiltersPage from "../pages/FiltersPage";
+import 'cypress-mochawesome-reporter/cucumberSupport';
+
 
 let productosFiltrados = 0;
 

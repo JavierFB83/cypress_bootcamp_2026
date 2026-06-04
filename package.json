@@ -10,7 +10,8 @@
     "cy:purchaseFlow": "npx cypress run --spec 'cypress/e2e/tests/features/**/*.feature' --env tags='@purchaseFlow'",
     "cy:filters": "npx cypress run --spec 'cypress/e2e/tests/features/**/*.feature' --env tags='@filters'",
     "cy:login": "npx cypress run --spec 'cypress/e2e/tests/features/**/*.feature' --env tags='@login'",
-    "cy:smoke": "npx cypress run --spec 'cypress/e2e/tests/features/**/*.feature' --env tags='@smoke'"
+    "cy:smoke": "npx cypress run --spec 'cypress/e2e/tests/features/**/*.feature' --env tags='@smoke'",
+    "cy:api": "cypress run --spec 'cypress/e2e/tests/apiTests/*.js'"
   },
   "repository": {
     "type": "git",
@@ -33,7 +34,12 @@
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^24.0.1",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
+    "cypress-mochawesome-reporter": "^4.0.2",
+    "cypress-on-fix": "^1.1.0",
     "esbuild": "^0.28.0",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.1",
+    "mochawesome-report-generator": "^6.3.2",
     "wick-a11y": "^3.0.1"
   }
 }
