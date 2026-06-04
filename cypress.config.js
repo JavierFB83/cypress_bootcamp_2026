@@ -2,6 +2,7 @@ const { defineConfig } = require("cypress");
 const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
 const {addCucumberPreprocessorPlugin,} = require("@badeball/cypress-cucumber-preprocessor");
 const {createEsbuildPlugin,} = require("@badeball/cypress-cucumber-preprocessor/esbuild");
+const cypressOnFix = require("cypress-on-fix");
 
 // wick-a11y: importa las tareas de accesibilidad
 const addAccessibilityTasks = require('wick-a11y/accessibility-tasks');
@@ -44,7 +45,7 @@ module.exports = defineConfig({
       const bundler = createBundler({
         plugins: [createEsbuildPlugin(config)],
       });
-      
+
        // "cypress-on-fix" is required because "cypress-mochawesome-reporter" and "cypress-cucumber-preprocessor" use the same hooks
       on = cypressOnFix(on);
       
