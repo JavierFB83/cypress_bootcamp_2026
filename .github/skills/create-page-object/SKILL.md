@@ -81,3 +81,7 @@ export default new NombrePage();
 - Usa selectores accesibles: formcontrolname > aria-label > data-testid > placeholder > type.
 - El archivo va en `cypress/e2e/pages/` con nombre PascalCase (`NombrePage.js`).
 - Los nombres de métodos en **inglés**: `get`, `click`, `type`, `clear`, `assert`.
+
+
+# Preguntar al final
+- Preguntame siempre al final si el flujo ha sido el adecuado o hay algo que mejorar, en ese caso indica si lo puedes mejorar tu

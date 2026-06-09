@@ -79,7 +79,39 @@ describe('API GET Footer Products & Cart', () => {
 		});
 	});
 
-	it.only('GET /api/cart - Obtener carrito', () => {
+	it('GET /api/products?name=Nike - Filtrar productos por nombre', () => {
+		const searchTerm = 'Nike';
+		cy.request(`https://footer-back.onrender.com/api/products?name=${searchTerm}`).then((response) => {
+			expect(response.status).to.eq(200);
+			expect(response.body).to.have.property('products');
+			expect(response.body.products).to.be.an('array').and.not.empty;
+
+			// Aserción: todos los productos devueltos contienen el término buscado en el nombre
+			response.body.products.forEach((product) => {
+				expect(product).to.have.property('name');
+				expect(product.name.toLowerCase()).to.include(searchTerm.toLowerCase());
+			});
+			cy.log(`Productos encontrados con "${searchTerm}": ${response.body.products.length}`);
+		});
+	});
+
+	it('GET /api/products/999999 - Producto inexistente devuelve 404', () => {
+		cy.request({
+			method: 'GET',
+			url: 'https://footer-back.onrender.com/api/products/999999',
+			failOnStatusCode: false,
+		}).then((response) => {
+			expect(response.status).to.eq(404);
+			expect(response.body).to.be.an('object');
+			// Aserción: el body contiene un mensaje de error
+			expect(response.body).to.satisfy(
+				(body) => body.hasOwnProperty('message') || body.hasOwnProperty('error'),
+				'El body debe contener una propiedad "message" o "error"'
+			);
+		});
+	});
+
+	it('GET /api/cart - Obtener carrito', () => {
 
         cy.fixture('login_form').then((loginData) => {
             cy.request('POST', 'https://footer-back.onrender.com/api/auth/login', {
@@ -105,5 +137,33 @@ describe('API GET Footer Products & Cart', () => {
 			expect(response.body).to.be.an('array');
 		});
 	});
+	});
+
+	it('GET /api/products?page=10 - Última página devuelve currentPage correcto', () => {
+		cy.request('https://footer-back.onrender.com/api/products?page=10').then((response) => {
+			expect(response.status).to.eq(200);
+			expect(response.body).to.have.property('products');
+			expect(response.body.products).to.be.an('array');
+			expect(response.body).to.have.property('currentPage', 10);
+			expect(response.body).to.have.property('totalPages', 10);
+
+			// Aserción: todos los productos de la página tienen las propiedades básicas
+			response.body.products.forEach((product) => {
+				expect(product).to.have.property('id').that.is.a('number');
+				expect(product).to.have.property('name').that.is.a('string');
+				expect(product).to.have.property('category').that.is.a('string');
+			});
+			cy.log(`Productos en la última página: ${response.body.products.length}`);
+		});
+	});
+
+	it('GET /api/products?name=NoExisteProducto123 - Búsqueda sin resultados devuelve array vacío', () => {
+		const searchTerm = 'NoExisteProducto123';
+		cy.request(`https://footer-back.onrender.com/api/products?name=${searchTerm}`).then((response) => {
+			expect(response.status).to.eq(200);
+			expect(response.body).to.have.property('products');
+			expect(response.body.products).to.be.an('array').that.is.empty;
+			cy.log(`Sin resultados para el término: "${searchTerm}"`);
+		});
 	});
 });

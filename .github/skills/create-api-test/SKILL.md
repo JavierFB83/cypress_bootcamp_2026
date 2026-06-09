@@ -71,3 +71,15 @@ before(() => {
 - Usa `failOnStatusCode: false` solo cuando pruebes errores esperados (4xx, 5xx).
 - Archivo en `cypress/e2e/tests/apiTests/` con nombre camelCase y sufijo `.cy.js`.
 - Los datos de prueba se pueden externalizar en `cypress/fixtures/`.
+
+# Preguntar al final
+- Preguntame siempre al final si el flujo ha sido el adecuado o hay algo que mejorar, en ese caso indica si lo puedes mejorar tu
+- Después de crear o modificar el test, pregúntame **siempre** si quiero ejecutarlo para verificar que funciona. Si respondo que sí, lánzalo con el script de npm correspondiente (`npm run cy:api` para tests de API) o con `npx cypress run --spec "<ruta_del_archivo>"` para ejecutar únicamente el archivo creado/modificado.
+
+# Ejecución aislada con `.only` (preferencia del usuario)
+- Cuando el usuario pida ejecutar **solo los tests nuevos** dentro de un archivo que contiene otros tests:
+  1. Añade `.only` exclusivamente a los tests nuevos (`it.only(...)`).
+  2. Si hay otros `.only` previos en el archivo, quítalos para que no se ejecuten.
+  3. Lanza el spec con `npx cypress run --spec "<ruta>"`.
+  4. **Después de ejecutar**, quita siempre el `.only` de los tests nuevos para devolver el archivo a su estado normal. No dejes nunca `.only` commiteable en el código.
+- Si el comando `npx cypress` requiere una versión específica de Node, usa `source ~/.nvm/nvm.sh && nvm use 24 >/dev/null && npx cypress run ...` en la misma línea (la sesión de terminal no persiste `nvm use` entre llamadas).

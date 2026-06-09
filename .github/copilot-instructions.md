@@ -73,3 +73,21 @@
 - `cy:login` — Features con tag @login
 - `cy:api` — Tests de API
 - `cy:accesibilidad` — Tests de accesibilidad
+
+## Mapeo instruction → skill (OBLIGATORIO)
+
+Cuando un archivo coincida con un `applyTo` de la tabla, **SIEMPRE** lee primero el
+`SKILL.md` indicado antes de generar o modificar código. No basta con seguir la
+instruction: la skill contiene la plantilla y el procedimiento canónicos.
+
+| Path (`applyTo`)                | Skill obligatoria      | Ruta del SKILL.md                                |
+|---------------------------------|------------------------|--------------------------------------------------|
+| `cypress/e2e/tests/apiTests/**` | `create-api-test`      | `.github/skills/create-api-test/SKILL.md`        |
+| `cypress/e2e/pages/**`          | `create-page-object`   | `.github/skills/create-page-object/SKILL.md`     |
+| `cypress/e2e/features/**`       | `create-feature-file`  | `.github/skills/create-feature-file/SKILL.md`    |
+| `cypress/e2e/tests/describe_test/**` | `create-e2e-test` | `.github/skills/create-e2e-test/SKILL.md`        |
+| `.github/workflows/**`          | `create-github-workflow` | `.github/skills/create-github-workflow/SKILL.md` |
+
+Regla: si vas a crear o editar un archivo cuyo path coincide con uno de estos
+patrones, ejecuta primero `read_file` sobre el `SKILL.md` correspondiente y
+aplica su procedimiento.

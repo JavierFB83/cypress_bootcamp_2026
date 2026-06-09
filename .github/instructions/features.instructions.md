@@ -4,6 +4,10 @@ applyTo: "cypress/e2e/features/**"
 
 # Instrucciones para Features Gherkin
 
+> **OBLIGATORIO:** Antes de crear o modificar cualquier `.feature` o sus step definitions,
+> lee y aplica la skill `create-feature-file` ubicada en
+> `.github/skills/create-feature-file/SKILL.md`. No generes ni edites código hasta haberla leído.
+
 - Escribe todos los pasos en **español**.
 - Incluye tags: al menos `@regression` + un tag específico del módulo.
 - Tags disponibles: `@regression`, `@smoke`, `@login`, `@purchaseFlow`, `@filters`, `@homePage`.

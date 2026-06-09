@@ -4,6 +4,10 @@ applyTo: "cypress/e2e/pages/**"
 
 # Instrucciones para Page Objects
 
+> **OBLIGATORIO:** Antes de crear o modificar cualquier Page Object en este directorio,
+> lee y aplica la skill `create-page-object` ubicada en
+> `.github/skills/create-page-object/SKILL.md`. No generes ni edites código hasta haberla leído.
+
 - Toda Page hereda de `CommonPage` (`cypress/e2e/pages/CommonPage.js`).
 - Exporta una instancia: `export default new NombrePage()`.
 - Métodos de selección empiezan con `get` y devuelven `cy.get()` para encadenar.

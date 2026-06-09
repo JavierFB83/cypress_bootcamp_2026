@@ -50,3 +50,6 @@ describe('Nombre descriptivo del módulo', () => {
 4. `[placeholder="..."]` → `page.getByPlaceholder('text')`
 5. `[type="..."]` → `page.getByType('type')`
 6. Evitar selectores frágiles como clases CSS o XPath.
+
+# Preguntar al final
+- Preguntame siempre al final si el flujo ha sido el adecuado o hay algo que mejorar, en ese caso indica si lo puedes mejorar tu

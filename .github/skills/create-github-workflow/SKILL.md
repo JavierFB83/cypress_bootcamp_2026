@@ -80,3 +80,6 @@ jobs:
 - Usar acciones con tag `@v6` para checkout, setup-node y upload-artifact.
 - El nombre del workflow debe ser descriptivo: `Cypress [Tipo] Tests`.
 - El archivo va en `.github/workflows/` con nombre descriptivo en kebab-case.
+
+# Preguntar al final
+- Preguntame siempre al final si el flujo ha sido el adecuado o hay algo que mejorar, en ese caso indica si lo puedes mejorar tu
