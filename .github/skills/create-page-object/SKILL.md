@@ -5,6 +5,11 @@ description: "Crea una nueva Page Object siguiendo el patrón de herencia de Com
 
 # Crear Page Object
 
+> ⛔ **Esta skill es de lectura obligatoria.** Si llegaste aquí porque vas a crear o
+> modificar una Page Object en `cypress/e2e/pages/`, NO continúes sin haber leído este
+> archivo completo con `read_file` en esta misma conversación. Basarse en memoria o en
+> extractos adjuntos no cuenta como haberla leído.
+
 ## Antes de empezar
 Lee `cypress/e2e/pages/CommonPage.js` para conocer los métodos heredados disponibles:
 

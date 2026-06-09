@@ -4,9 +4,15 @@ applyTo: "cypress/e2e/tests/apiTests/**"
 
 # Instrucciones para Tests de API
 
-> **OBLIGATORIO:** Antes de crear o modificar cualquier test en este directorio,
-> lee y aplica la skill `create-api-test` ubicada en
-> `.github/skills/create-api-test/SKILL.md`. No generes ni edites código hasta haberla leído.
+> ⛔ **PARADA OBLIGATORIA — NO EDITES NADA TODAVÍA.**
+>
+> Antes de crear, modificar o sugerir cualquier test en este directorio,
+> **DEBES** invocar la herramienta `read_file` sobre
+> `.github/skills/create-api-test/SKILL.md` y aplicar su procedimiento al pie de la letra.
+>
+> No basta con recordar reglas previas ni con basarse en extractos adjuntos:
+> la lectura explícita de la skill es **un paso requerido** de este flujo.
+> Si saltas este paso, el trabajo se considera incorrecto y debe rehacerse.
 
 - Usa `cy.request()` exclusivamente para llamadas HTTP.
 - Valida siempre: status code, estructura del body y tipos de datos.

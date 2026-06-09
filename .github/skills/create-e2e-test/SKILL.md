@@ -5,6 +5,11 @@ description: "Crea un test E2E usando el patrón Page Object Model del proyecto 
 
 # Crear Test E2E con POM
 
+> ⛔ **Esta skill es de lectura obligatoria.** Si llegaste aquí porque vas a crear o
+> modificar un test en `cypress/e2e/tests/describe_test/`, NO continúes sin haber leído
+> este archivo completo con `read_file` en esta misma conversación. Basarse en memoria
+> o en extractos adjuntos no cuenta como haberla leído.
+
 ## Contexto
 Este proyecto usa Cypress con Page Object Model. Antes de crear un test:
 

@@ -5,6 +5,11 @@ description: "Crea un workflow de GitHub Actions para ejecutar tests de Cypress 
 
 # Crear Workflow de GitHub Actions
 
+> ⛔ **Esta skill es de lectura obligatoria.** Si llegaste aquí porque vas a crear o
+> modificar un workflow en `.github/workflows/`, NO continúes sin haber leído este
+> archivo completo con `read_file` en esta misma conversación. Basarse en memoria o en
+> extractos adjuntos no cuenta como haberla leído.
+
 ## Contexto
 Este proyecto usa GitHub Actions para CI/CD. Los workflows existentes están en `.github/workflows/`. Revisa los existentes antes de crear uno nuevo para mantener coherencia.
 

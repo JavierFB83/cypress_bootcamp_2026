@@ -5,6 +5,11 @@ description: "Crea un archivo .feature en Gherkin y sus step definitions corresp
 
 # Crear Feature + Step Definitions
 
+> ⛔ **Esta skill es de lectura obligatoria.** Si llegaste aquí porque vas a crear o
+> modificar un `.feature` o sus steps, NO continúes sin haber leído este archivo
+> completo con `read_file` en esta misma conversación. Basarse en memoria o en
+> extractos adjuntos no cuenta como haberla leído.
+
 ## Antes de empezar
 1. Busca en `cypress/e2e/step_definitions/` si ya existen steps reutilizables.
 2. Lee las Pages existentes en `cypress/e2e/pages/` para conocer los métodos disponibles.
@@ -12,7 +17,7 @@ description: "Crea un archivo .feature en Gherkin y sus step definitions corresp
 
 ## Feature File
 
-Ubicación: `cypress/e2e/features/nombreFeature.feature`
+Ubicación: `cypress/e2e/tests/features/nombreFeature.feature`
 
 ```gherkin
 @regression @nombreTag

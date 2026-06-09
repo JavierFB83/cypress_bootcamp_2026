@@ -1,0 +1,40 @@
+name: Cypress Negative Tests
+
+on:
+  workflow_dispatch:
+
+jobs:
+  cypress-negative:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v6
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v6
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run Cypress negative tests
+      run: npm run cy:negative
+
+    - name: Upload report artifact
+      uses: actions/upload-artifact@v6
+      if: always()
+      with:
+        name: mochawesome-report
+        path: cypress/reports/html/index.html
+        retention-days: 30
+        if-no-files-found: warn
+
+    - name: Send notification to Slack
+      if: always()
+      env:
+          SLACK_WEBHOOK_URL: ${{ secrets.PIPELINESLACKCONECTION }}
+      run: |
+          payload="payload={\"text\":\":white_check_mark: Pipeline '${{ github.workflow }}' completed on branch '${{ github.ref }}' by ${{ github.actor }}\"}"
+          curl -X POST --data-urlencode "$payload" $SLACK_WEBHOOK_URL
+
+    env:
+        CI: true

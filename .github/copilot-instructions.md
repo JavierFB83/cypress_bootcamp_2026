@@ -14,7 +14,7 @@
 ## Estructura del proyecto
 - Pages (POM): `cypress/e2e/pages/`
 - Step definitions: `cypress/e2e/step_definitions/`
-- Features (Gherkin): `cypress/e2e/features/`
+- Features (Gherkin): `cypress/e2e/tests/features/`
 - Tests directos: `cypress/e2e/tests/describe_test/`
 - Tests API: `cypress/e2e/tests/apiTests/`
 - Fixtures: `cypress/fixtures/`
@@ -76,18 +76,29 @@
 
 ## Mapeo instruction → skill (OBLIGATORIO)
 
-Cuando un archivo coincida con un `applyTo` de la tabla, **SIEMPRE** lee primero el
-`SKILL.md` indicado antes de generar o modificar código. No basta con seguir la
-instruction: la skill contiene la plantilla y el procedimiento canónicos.
+> ⛔ **REGLA DE ORO — NO NEGOCIABLE.**
+>
+> Cuando un archivo a crear o editar coincida con un `applyTo` de la tabla, **DEBES**
+> ejecutar `read_file` sobre el `SKILL.md` correspondiente **antes** de generar o
+> modificar cualquier código, en cada conversación. La skill contiene la plantilla y
+> el procedimiento canónicos; la instruction sólo es un resumen.
+>
+> Aunque la skill ya aparezca como adjunto, en `<skills>`, o creas recordarla,
+> **igualmente debes leerla con `read_file` en este turno**. Saltarse este paso
+> invalida el trabajo y obliga a rehacerlo.
 
-| Path (`applyTo`)                | Skill obligatoria      | Ruta del SKILL.md                                |
-|---------------------------------|------------------------|--------------------------------------------------|
-| `cypress/e2e/tests/apiTests/**` | `create-api-test`      | `.github/skills/create-api-test/SKILL.md`        |
-| `cypress/e2e/pages/**`          | `create-page-object`   | `.github/skills/create-page-object/SKILL.md`     |
-| `cypress/e2e/features/**`       | `create-feature-file`  | `.github/skills/create-feature-file/SKILL.md`    |
-| `cypress/e2e/tests/describe_test/**` | `create-e2e-test` | `.github/skills/create-e2e-test/SKILL.md`        |
-| `.github/workflows/**`          | `create-github-workflow` | `.github/skills/create-github-workflow/SKILL.md` |
+| Path (`applyTo`)                       | Skill obligatoria        | Ruta del SKILL.md                                |
+|----------------------------------------|--------------------------|--------------------------------------------------|
+| `cypress/e2e/tests/apiTests/**`        | `create-api-test`        | `.github/skills/create-api-test/SKILL.md`        |
+| `cypress/e2e/pages/**`                 | `create-page-object`     | `.github/skills/create-page-object/SKILL.md`     |
+| `cypress/e2e/tests/features/**`        | `create-feature-file`    | `.github/skills/create-feature-file/SKILL.md`    |
+| `cypress/e2e/tests/describe_test/**`   | `create-e2e-test`        | `.github/skills/create-e2e-test/SKILL.md`        |
+| `.github/workflows/**`                 | `create-github-workflow` | `.github/skills/create-github-workflow/SKILL.md` |
 
-Regla: si vas a crear o editar un archivo cuyo path coincide con uno de estos
-patrones, ejecuta primero `read_file` sobre el `SKILL.md` correspondiente y
-aplica su procedimiento.
+### Procedimiento obligatorio antes de tocar un archivo de la tabla
+1. Identifica el `applyTo` que matchea el path.
+2. Ejecuta `read_file` sobre el `SKILL.md` indicado, leyéndolo entero.
+3. Aplica su plantilla y reglas literalmente.
+4. Sólo entonces genera o modifica el código.
+
+Si te saltas el paso 2, debes detenerte, leer la skill y rehacer la respuesta.

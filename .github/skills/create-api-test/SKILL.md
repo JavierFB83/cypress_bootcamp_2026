@@ -5,6 +5,11 @@ description: "Crea un test de API REST usando cy.request() con validaciones comp
 
 # Crear Test de API
 
+> ⛔ **Esta skill es de lectura obligatoria.** Si llegaste aquí porque vas a crear o
+> modificar un test en `cypress/e2e/tests/apiTests/`, NO continúes sin haber leído este
+> archivo completo con `read_file` en esta misma conversación. Basarse en memoria o en
+> extractos adjuntos no cuenta como haberla leído.
+
 ## Contexto
 Este proyecto usa Cypress para pruebas de API con `cy.request()`. Los tests de API se encuentran en `cypress/e2e/tests/apiTests/`.
 

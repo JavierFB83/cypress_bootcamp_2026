@@ -11,6 +11,7 @@
     "cy:filters": "npx cypress run --spec 'cypress/e2e/tests/features/**/*.feature' --env tags='@filters'",
     "cy:login": "npx cypress run --spec 'cypress/e2e/tests/features/**/*.feature' --env tags='@login'",
     "cy:smoke": "npx cypress run --spec 'cypress/e2e/tests/features/**/*.feature' --env tags='@smoke'",
+    "cy:negative": "npx cypress run --spec 'cypress/e2e/tests/features/**/*.feature' --env tags='@negative'",
     "cy:api": "npx cypress run --spec 'cypress/e2e/tests/apiTests/**/*.cy.js'",
     "cy:accesibilidad": "npx cypress run --spec 'cypress/e2e/tests/describe_test/accesibilidad.cy.js'"
   },
